@@ -195,7 +195,7 @@
 
 			//tabla de la bd
 			$tabla = "personas";
-
+		
 			$respuesta = ModeloPersonas::mdlVerPersona($tabla, $item, $valor);
 			return $respuesta;
 		}

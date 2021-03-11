@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
   <!--Calendarios-->
   <link rel="stylesheet" href="vistas/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> 
+  <!--Estilos personalizados-->
+  <link rel="stylesheet" href="vistas/css/estilos.css">
   <!--=====================================
   =           Plugins de Javascript       =
   ======================================-->
@@ -55,6 +57,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!--Calendarios-->
   <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <!--Jsignature-->
+  <script src="vistas/plugins/Jsignature/jSignature.js"></script>
+  <script src="vistas/plugins/Jsignature/jSignature.CompressorSVG.js"></script>
 </head>
 <!--=====================================
 =            Cuerpo del documento       =
@@ -96,6 +101,10 @@
                     break;
 
             //Seccion administracion
+
+              case 'registro-dispositivo':
+                    include "modulos/".$_GET["action"].".php";
+                    break;
 
               case 'admin-usuarios':
                     include "modulos/".$_GET["action"].".php";

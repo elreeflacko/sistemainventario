@@ -29,6 +29,55 @@
 						$activo_dispositivo = trim($activo_dispositivo);
 						$activo_dispositivo = filter_var($activo_dispositivo, FILTER_SANITIZE_STRING);
 
+						//Validamos la imagen de la firma
+						if (isset($_FILES["firma_persona"]["tmp_name"])) {
+
+							list($ancho, $alto) = getimagesize($_FILES["firma_persona"]["tmp_name"]);
+
+							$nuevo_ancho = 1500;
+							$nuevo_alto = 800;
+
+							/*=============================================================================
+							=            Creamos el directorio donde vamos a guardar la imagen            =
+							=============================================================================*/
+							$directorio = "vistas/img/firmas/".$_POST["combobox_persona_registro"];
+							mkdir($directorio, 0755, true);
+							/*===============================================================================================
+							=            De acuerdo al tipo de imagen aplicamos las funciones por defecto de PHP            =
+							===============================================================================================*/
+							if($_FILES["firma_persona"]["type"] == "image/jpeg"){
+								/*============================================================
+								=            guardamos la imagen en el directorio            =
+								============================================================*/
+								$firma_ruta = "vistas/img/firmas/".$_POST["combobox_persona_registro"]."/".$_POST["combobox_persona_registro"].".jpg";
+								$firma_origen = imagecreatefromjpeg($_FILES["firma_persona"]["tmp_name"]);
+								$firma_destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+								imagecopyresized($firma_destino, $firma_origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+								imagejpeg($firma_destino, $firma_ruta);
+								/*=====  End of guardamos la imagen en el directorio  ======*/
+								
+							}
+							if($_FILES["firma_persona"]["type"] == "image/png"){
+								/*============================================================
+								=            guardamos la imagen en el directorio            =
+								============================================================*/
+								$firma_ruta = "vistas/img/firmas/".$_POST["combobox_persona_registro"]."/".$_POST["combobox_persona_registro"].".png";
+								$firma_origen = imagecreatefrompng($_FILES["firma_persona"]["tmp_name"]);
+								$firma_destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+								imagecopyresized($firma_destino, $firma_origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+								imagepng($firma_destino, $firma_ruta);
+								/*=====  End of guardamos la imagen en el directorio  ======*/
+								
+							}
+							/*=====  End of De acuerdo al tipo de imagen aplicamos las funciones por defecto de PHP  ======*/
+		
+							/*=====  End of Creamos el directorio donde vamos a guardar la imagen  ======*/	
+						}
+						else{
+							
+							$firma_ruta = "";
+						}
+
 						//Nombre de la tabla de la bd
 						$tabla = "dispositivos";
 
@@ -39,7 +88,8 @@
 										       'id_modelo'              => $_POST["combobox_modelo_registro"],
 										       'id_persona'             => $_POST["combobox_persona_registro"],
 										       'id_lugar'               => $_POST["combobox_lugar_registro"],
-										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"]
+										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"],
+											   'firma_dispositivo'      => $firma_ruta
 										      );
 
 						$respuesta = ModeloDispositivos::mdlRegistrarDispositivo($tabla, $datos_dispositivo);
@@ -102,6 +152,55 @@
 						$activo_dispositivo = trim($activo_dispositivo);
 						$activo_dispositivo = filter_var($activo_dispositivo, FILTER_SANITIZE_STRING);
 
+						//Validamos la imagen de la firma
+						if (isset($_FILES["firma_persona"]["tmp_name"])) {
+				
+							list($ancho, $alto) = getimagesize($_FILES["firma_persona"]["tmp_name"]);
+
+							$nuevo_ancho = 1500;
+							$nuevo_alto = 800;
+
+							/*=============================================================================
+							=            Creamos el directorio donde vamos a guardar la imagen            =
+							=============================================================================*/
+							$directorio = "vistas/img/firmas/".$_POST["combobox_persona_registro"];
+							mkdir($directorio, 0755, true);
+
+							/*===============================================================================================
+							=            De acuerdo al tipo de imagen aplicamos las funciones por defecto de PHP            =
+							===============================================================================================*/
+							if($_FILES["firma_persona"]["type"] == "image/jpeg"){
+								/*============================================================
+								=            guardamos la imagen en el directorio            =
+								============================================================*/
+								$firma_ruta = "vistas/img/firmas/".$_POST["combobox_persona_registro"]."/".$_POST["combobox_persona_registro"].".jpg";
+								$firma_origen = imagecreatefromjpeg($_FILES["firma_persona"]["tmp_name"]);
+								$firma_destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+								imagecopyresized($firma_destino, $firma_origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+								imagejpeg($firma_destino, $firma_origen);
+								/*=====  End of guardamos la imagen en el directorio  ======*/
+								
+							}
+							if($_FILES["firma_persona"]["type"] == "image/png"){
+								/*============================================================
+								=            guardamos la imagen en el directorio            =
+								============================================================*/
+								$firma_ruta = "vistas/img/firmas/".$_POST["combobox_persona_registro"]."/".$_POST["combobox_persona_registro"].".png";
+								$firma_origen = imagecreatefrompng($_FILES["firma_persona"]["tmp_name"]);
+								$firma_destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+								imagecopyresized($firma_destino, $firma_origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+								imagepng($firma_destino, $firma_origen);
+								/*=====  End of guardamos la imagen en el directorio  ======*/
+								
+							}
+							/*=====  End of De acuerdo al tipo de imagen aplicamos las funciones por defecto de PHP  ======*/
+		
+							/*=====  End of Creamos el directorio donde vamos a guardar la imagen  ======*/	
+						}
+						else{
+							$firma_ruta = "";
+						}
+
 						//Nombre de la tabla de la bd
 						$tabla = "dispositivos";
 
@@ -112,7 +211,8 @@
 										       'id_modelo'              => $_POST["combobox_modelo_registro"],
 										       'id_persona'             => $_POST["combobox_persona_registro"],
 										       'id_lugar'               => $_POST["combobox_lugar_registro"],
-										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"]
+										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"],
+											   'firma_dispositivo'      => $firma_ruta
 										      );
 
 						$respuesta = ModeloDispositivos::mdlRegistrarDispositivo($tabla, $datos_dispositivo);
@@ -405,4 +505,22 @@
 			return $respuesta;
 		}
 		/*=====  End of MOSTRAR ESTADO DISPOSITIVO  ======*/
+
+		/*=====================================
+		=            GUARDAR FIRMA            =
+		=====================================*/
+		public static function ctrGuardarFirma(/*$item_idDispositivo, $item_firma, $valor_idDispositivo, $valor_firma*/$valor_idDispositivo, $valor_firma){
+
+			//tabla de la bd
+			$tabla = "dispositivos";
+
+			$respuesta = ModeloDispositivos::mdlGuardarFirma(/*$item_idDispositivo, $item_firma,*/ $tabla, $valor_idDispositivo, $valor_firma);
+
+			if ($respuesta == "ok") {
+				return "ok";
+			}
+			
+		}
+		/*=====  End of GUARDAR FIRMA  ======*/
+		
 	}

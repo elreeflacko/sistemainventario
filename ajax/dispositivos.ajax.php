@@ -173,6 +173,38 @@
 			return  $lista_personas;
 		}
 		/*=====  End of CARGAR DATOS EN EL SELECTOR DE PERSONAS  ======*/
+
+		/*=========================================================
+		=            GUARDAR FIRMA EN LA BASE DE DATOS            =
+		=========================================================*/
+		public $datos_idDispo_firma;
+
+		public function ajaxGuardarFirma(){
+
+			//$item_idDispositivo = "dispositivo_id";
+			//$item_firma = "dispositivo_firma";
+
+			$valor_idDispositivo = $this->datos_idDispo_firma[0];
+			$valor_firma = $this->datos_idDispo_firma[1];
+
+			//$valor_svg = $valor_firma[0];
+			//$valor_firma_persona = $valor_firma[1];
+
+			$respuesta = ControladorDispositivos::ctrGuardarFirma(/*$item_idDispositivo, $item_firma,*/ $valor_idDispositivo, $valor_firma);
+
+			if ($respuesta == "ok") {
+				echo $valor_firma[1];
+			}
+
+			//echo $valor_idDispositivo;
+			//echo $valor_firma[0];
+			//echo $valor_firma[1];
+
+			//echo $valor_svg;
+			//echo $valor_firma_persona;
+		}
+		/*=====  End of GUARDAR FIRMA EN LA BASE DE DATOS  ======*/
+		
 	}
 	/*============================================
 	=          OBJETO CARGAR SELECTOR MODELOS           =
@@ -250,3 +282,15 @@
 		$cargar_personas_editar_ajax-> ajaxCargaComboboxPersonasEditar();
 	}
 	/*=== End of OBJETO CARGAR SELECTOR PERSONAS   ====*/ 
+
+	/*====================================================
+	=            OBJETO PARA GUARDAR LA FIRMA            =
+	====================================================*/
+	if (isset($_POST["idDispositivo_firma"])) {
+		
+		$firma_ajax = new AjaxDispositivos();
+		$firma_ajax-> datos_idDispo_firma = $_POST["idDispositivo_firma"];
+		$firma_ajax-> ajaxGuardarFirma(); 
+	}
+	/*=====  End of OBJETO PARA GUARDAR LA FIRMA  ======*/
+	

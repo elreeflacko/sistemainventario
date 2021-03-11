@@ -105,3 +105,6 @@ $(document).on("click", ".btn_ver_persona", function(){
 	})
 })
 /*=====  End of VER PERSONA  ======*/
+
+
+

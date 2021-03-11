@@ -13,7 +13,10 @@
     <section class="content">
       <div class="box">
         <div class="box-header with-border">
+          <a href="index.php?action=registro-dispositivo" class="btn btn-primary">Registrar Dispositivo</a>
+          <!--
           <button class="btn btn-primary" data-toggle="modal" data-target="#modal_registrar_dispositivo">Registrar dispositivo</button>
+          -->
         </div>
         <div class="box-body">
           <table class="table table-bordered table-striped dt-responsive tablaDispositivos" width="100%">
@@ -44,7 +47,7 @@
 <div id="modal_registrar_dispositivo" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post">
+      <form role="form" method="post" enctype="multipart/form-data">
         <!--======================================
         =            CABEZA DEL MODAL            =
         =======================================-->
@@ -212,7 +215,7 @@
             <!--Entrada para el estado del dispositivo-->
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa  fa-gavel"></i></span>
+                <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
                 <select class="form-control input-lg" name="combobox_estado_registrar" id="combobox_estado_registrar">
                   <option value="">Estado</option>
                   <option value="asignado">asignado</option>
@@ -223,6 +226,12 @@
                   <option value="seguro">seguro</option>
                 </select>
               </div>
+            </div>
+            <!--Entrada para la firma-->
+            <div class="form-group">
+              <div class="panel">SUBIR FIRMA</div>
+                <input type="file" id="firma_persona" name="firma_persona">
+                <img src="vistas/img/firmas/firma.png" class="img-thumbnail previsualizar_firma" width="100px">
             </div>
           </div>
         </div>
@@ -242,6 +251,7 @@
             $registrar_dispositivo-> ctrRegistrarDispositivo();
 
         ?>
+
       </form>
     </div>
   </div>
@@ -252,7 +262,7 @@
 =            MODAL EDITAR dispositivos               =
 ==============================================-->
 <div id="modal_editar_dispositivo" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <form role="form" method="post">
         <!--======================================
@@ -439,6 +449,17 @@
             </div>
           </div>
         </div>
+        <!--Entrada para la firma-->
+        <div class="form-group" style="margin-left: 10px;">
+          <div class="input-group">
+            <div id="signatureparent">
+              <div id="signature"></div>  
+            </div>
+            <div id="respuesta"></div>
+            <button type="button" class="btn btn-warning" id="repetir_firma" style="margin-right: 20px;">Repetir Firma</button>
+            <button type="button" class="btn btn-success" id="guardar_firma">Guardar Firma</button>  
+          </div>  
+        </div>
         <!--====  End of CUERPO DEL MODAL  ====-->
         <!--===================================
         =            PIE DEL MODAL            =
@@ -602,3 +623,4 @@
 
 ?>
 <!--====  End of LLAMAMOS EL METODO PARA ELIMINAR UN DISPOSITIVO  -->
+
