@@ -242,7 +242,7 @@
 		/*====================================
 		=            GUARDARFIRMA            =
 		====================================*/
-		public static function mdlGuardarFirma(/*$item_idDispositivo, $item_firma,*/$tabla, $valor_idDispositivo, $valor_firma){
+		public static function mdlGuardarFirma($tabla, $valor_idDispositivo, $valor_firma){
 
 			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET dispositivo_firma = :dispositivo_firma WHERE dispositivo_id = :dispositivo_id");
 
@@ -252,7 +252,8 @@
 			if($stmt->execute()) {
 				return "ok";
 			}else{
-				return print_r(Conexion::conectar()->errorInfo());
+				return "false";
+				//return print_r(Conexion::conectar()->errorInfo());
 			}
 			$stmt->close();
 			$stmt = null;			

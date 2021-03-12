@@ -202,31 +202,17 @@ $("#guardar_firma").click(function(){
 		var firma = $("#signatureparent").jSignature("getData", "image/svg+xml");
 		var dispositivo_id = $("#id_dispositivo_actual").val();
 		var idDispositivo_firma = new Array (dispositivo_id, firma);
-		//console.log("idDispositivo_firma", idDispositivo_firma);
 
 		$.ajax({
 			type:"POST",
 			url:"ajax/dispositivos.ajax.php",
 			data: {'idDispositivo_firma': idDispositivo_firma},
 			success:function(respuesta){
-				$("#respuesta").html(respuesta);
+				$("#respuesta-firma").html(respuesta);
 			}
-		})
+		});
 	}
 });
 /*=====  End of Validamos si la firma exite para guardar en la base de datos  ======*/
 
-
-	/*var tipo_dispositivo = $("#combobox_tipoDispo_registro").val();
-	var marca = $("#combobox_marca_registro").val();
-	var tipo_marca_array = new Array (tipo_dispositivo, marca);
-
-	$.ajax({
-		type:"POST",
-		url:"ajax/dispositivos.ajax.php",
-		data: {'tipo_marca_array' : tipo_marca_array},
-		success:function(respuesta){
-			$("#combobox_modelo_registro").html(respuesta);
-		}
-	})*/
 

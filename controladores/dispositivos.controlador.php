@@ -509,17 +509,18 @@
 		/*=====================================
 		=            GUARDAR FIRMA            =
 		=====================================*/
-		public static function ctrGuardarFirma(/*$item_idDispositivo, $item_firma, $valor_idDispositivo, $valor_firma*/$valor_idDispositivo, $valor_firma){
+		public static function ctrGuardarFirma($valor_idDispositivo, $valor_firma){
 
 			//tabla de la bd
 			$tabla = "dispositivos";
 
-			$respuesta = ModeloDispositivos::mdlGuardarFirma(/*$item_idDispositivo, $item_firma,*/ $tabla, $valor_idDispositivo, $valor_firma);
+			$respuesta = ModeloDispositivos::mdlGuardarFirma($tabla, $valor_idDispositivo, $valor_firma);
 
 			if ($respuesta == "ok") {
 				return "ok";
-			}
-			
+			}else{
+				return "false";
+			}	
 		}
 		/*=====  End of GUARDAR FIRMA  ======*/
 		

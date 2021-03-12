@@ -13,10 +13,7 @@
     <section class="content">
       <div class="box">
         <div class="box-header with-border">
-          <a href="index.php?action=registro-dispositivo" class="btn btn-primary">Registrar Dispositivo</a>
-          <!--
           <button class="btn btn-primary" data-toggle="modal" data-target="#modal_registrar_dispositivo">Registrar dispositivo</button>
-          -->
         </div>
         <div class="box-body">
           <table class="table table-bordered table-striped dt-responsive tablaDispositivos" width="100%">
@@ -218,20 +215,11 @@
                 <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
                 <select class="form-control input-lg" name="combobox_estado_registrar" id="combobox_estado_registrar">
                   <option value="">Estado</option>
-                  <option value="asignado">asignado</option>
-                  <option value="no-asignado">no-asignado</option>
-                  <option value="prestado">prestado</option>
-                  <option value="reparacion">reparacion</option>
-                  <option value="garantia">garantia</option>
-                  <option value="seguro">seguro</option>
+                  <option value="asignado">Asignado</option>
+                  <option value="no-asignado">No asignado</option>
+                  <option value="prestado">Prestado</option>
                 </select>
               </div>
-            </div>
-            <!--Entrada para la firma-->
-            <div class="form-group">
-              <div class="panel">SUBIR FIRMA</div>
-                <input type="file" id="firma_persona" name="firma_persona">
-                <img src="vistas/img/firmas/firma.png" class="img-thumbnail previsualizar_firma" width="100px">
             </div>
           </div>
         </div>
@@ -251,7 +239,6 @@
             $registrar_dispositivo-> ctrRegistrarDispositivo();
 
         ?>
-
       </form>
     </div>
   </div>
@@ -438,26 +425,28 @@
                 <span class="input-group-addon"><i class="fa  fa-gavel"></i></span>
                 <select class="form-control input-lg" name="combobox_estado_editar" id="combobox_estado_editar">
                   <option id="estado_dispositivo_actual"></option>
-                  <option value="asignado">asignado</option>
-                  <option value="no-asignado">no-asignado</option>
-                  <option value="prestado">prestado</option>
-                  <option value="reparacion">reparacion</option>
-                  <option value="garantia">garantia</option>
-                  <option value="seguro">seguro</option>
+                  <option value="asignado">Asignado</option>
+                  <option value="no-asignado">No asignado</option>
+                  <option value="prestado">Prestado</option>
+                  <option value="reparacion">Reparación</option>
+                  <option value="garantia">Garantía</option>
+                  <option value="seguro">Seguro</option>
+                  <option value="baja">Dar de baja</option>
+                  <option value="hurto">Hurto</option>
                 </select>
               </div>
             </div>
           </div>
         </div>
         <!--Entrada para la firma-->
-        <div class="form-group" style="margin-left: 10px;">
+        <div class="form-group" style="margin-left: 20px;">
           <div class="input-group">
             <div id="signatureparent">
               <div id="signature"></div>  
             </div>
-            <div id="respuesta"></div>
+            <div id="respuesta-firma" style="margin: 20px;"></div>
             <button type="button" class="btn btn-warning" id="repetir_firma" style="margin-right: 20px;">Repetir Firma</button>
-            <button type="button" class="btn btn-success" id="guardar_firma">Guardar Firma</button>  
+            <button type="button" class="btn btn-info" id="guardar_firma">Guardar Firma</button>  
           </div>  
         </div>
         <!--====  End of CUERPO DEL MODAL  ====-->

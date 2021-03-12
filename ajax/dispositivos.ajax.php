@@ -181,33 +181,22 @@
 
 		public function ajaxGuardarFirma(){
 
-			//$item_idDispositivo = "dispositivo_id";
-			//$item_firma = "dispositivo_firma";
-
 			$valor_idDispositivo = $this->datos_idDispo_firma[0];
 			$valor_firma = $this->datos_idDispo_firma[1];
 
-			//$valor_svg = $valor_firma[0];
-			//$valor_firma_persona = $valor_firma[1];
-
-			$respuesta = ControladorDispositivos::ctrGuardarFirma(/*$item_idDispositivo, $item_firma,*/ $valor_idDispositivo, $valor_firma);
+			$respuesta = ControladorDispositivos::ctrGuardarFirma($valor_idDispositivo, $valor_firma);
 
 			if ($respuesta == "ok") {
-				echo $valor_firma[1];
+				echo '<div class="alert alert-success">Firma guardada exitosamente</div>';
+			}else{
+				echo '<div class="alert alert-danger">Firma no guardada exitosamente</div>';	
 			}
-
-			//echo $valor_idDispositivo;
-			//echo $valor_firma[0];
-			//echo $valor_firma[1];
-
-			//echo $valor_svg;
-			//echo $valor_firma_persona;
 		}
 		/*=====  End of GUARDAR FIRMA EN LA BASE DE DATOS  ======*/
 		
 	}
 	/*============================================
-	=          OBJETO CARGAR SELECTOR MODELOS           =
+	=          OBJETO CARGAR SELECTOR MODELOS    =
 	============================================*/
 	if (isset($_POST["tipo_marca_array"])) {
 		
