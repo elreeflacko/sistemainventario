@@ -432,7 +432,7 @@
                   <option value="garantia">Garantía</option>
                   <option value="seguro">Seguro</option>
                   <option value="baja">Dar de baja</option>
-                  <option value="hurto">Hurto</option>
+                  <option value="hurtado">Hurto</option>
                 </select>
               </div>
             </div>

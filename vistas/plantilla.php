@@ -186,9 +186,13 @@
                     include "modulos/".$_GET["action"].".php";
                     break;
 
-              /*case 'dados-de-baja':
+              case 'dados-baja':
                     include "modulos/".$_GET["action"].".php";
-                    break;*/
+                    break;
+
+              case 'hurtados':
+                    include "modulos/".$_GET["action"].".php";
+                    break;
 
               case 'programas':
                     include "modulos/".$_GET["action"].".php";
