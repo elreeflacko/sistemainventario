@@ -1,3 +1,10 @@
+<?php
+/*===========================================================================
+=            LLamamos el metodo para llamar la ruta del servidor            =
+===========================================================================*/
+$ruta = ControladorPlantilla::ctrRuta();
+/*=====  End of LLamamos el metodo para llamar la ruta del servidor  ======*/
+?>
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
@@ -456,6 +463,7 @@
         <!--Botones-->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <a href="<?php echo $ruta; ?>extensiones/TCPDF-main/examples/example_001.php" class="btn btn-success" role="button" target="_blank" style="margin-right: 40px;">Descargar Memo</a>
           <button type="submit" class="btn btn-primary pull-right">Actualizar dispositivo</button>
         </div>
         <!--====  End of PIE DEL MODAL  ====-->

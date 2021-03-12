@@ -6,4 +6,9 @@
 
 			include "vistas/plantilla.php";
 		}
+
+		public static function ctrRuta(){
+
+			return "http://localhost/sistemainventario/";
+		}
 	}
