@@ -72,6 +72,10 @@ $(document).on("click", ".btn_editar_dispositivo", function(){
 		success:function(respuesta){
 
 			$("#id_dispositivo_actual").val(respuesta["dispositivo_id"]);
+			//cambio temporal
+			//$("#id_dispositivo_editar").val(respuesta["dispositivo_id"]);
+			//$("#id_dispositivo_editar").html(respuesta["dispositivo_id"]);
+			//Este input de arriba es temporal
 			$("#nombre_tipoDispo_actual").html(respuesta["tipo_dispositivo_nombre"]);
 			$("#nombre_tipoDispo_actual").val(respuesta["tipo_dispositivo_id"]);
 			$("#nombre_marca_actual").html(respuesta["marca_nombre"]);
@@ -179,6 +183,19 @@ $(document).on("click", ".btn_eliminar_dispositivo", function(){
 });
 
 /*=====  End of ELIMINAR DISPOSITIVO ======*/
+
+/*=====================================
+=            Imprimir Memo            =
+=====================================*/
+/*$(document).on("click", "#btn_imprimir_memo", function(){
+	var id_dispositivo_imprimir = $('input:text[name=id_dispositivo_editar]').val();
+	//console.log("id_dispositivo_imprimir", id_dispositivo_imprimir);
+		window.location = "extensiones/TCPDF-main/examples/memo.php?dispoId="+id_dispositivo_imprimir;	
+		//window.location = "index.php";
+	
+});*/
+/*=====  End of Imprimir Memo  ======*/
+
 
 /*=================================================================
 =            firma asignada al dispositivo            =

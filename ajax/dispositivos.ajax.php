@@ -9,7 +9,6 @@
 	require_once "../controladores/dispositivos.controlador.php";
 	require_once "../modelos/dispositivos.modelo.php";
 
-
 	class AjaxDispositivos{
 
 		/*=============================================================

@@ -14,6 +14,10 @@
 
     <!-- Main content -->
     <section class="content">
+      <?php
+      $ruta_memo =  ControladorPlantilla::ctrRutaMemo();
+      echo '<pre>'; print_r($ruta_memo); echo '</pre>';
+      ?>
     </section>
     <!-- /.content -->
   </div>

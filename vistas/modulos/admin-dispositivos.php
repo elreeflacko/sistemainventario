@@ -275,6 +275,12 @@ $ruta = ControladorPlantilla::ctrRuta();
           <div class="box-body">
             <!--Entrada para el id del dispositivo ,este campo es oculto-->
             <input type="hidden" id="id_dispositivo_actual" name="id_dispositivo_actual">
+            <!--<div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-chain"></i></span>
+                <input type="text" class="form-control input-lg" id="id_dispositivo_editar" name="id_dispositivo_editar" maxlength="60">
+              </div>
+            </div>-->
             <!--Entrada para seleccionar el tipo de dispositivo-->
             <div class="form-group">
               <div class="input-group">
@@ -463,7 +469,8 @@ $ruta = ControladorPlantilla::ctrRuta();
         <!--Botones-->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <a href="<?php echo $ruta; ?>extensiones/TCPDF-main/examples/example_001.php" class="btn btn-success" role="button" target="_blank" style="margin-right: 40px;">Descargar Memo</a>
+          <!--<button type="button" class="btn btn-success" id="btn_imprimir_memo">Imprimir Memo</button>-->
+          <!--<a href="<?php //echo $ruta; ?>extensiones/TCPDF-main/examples/memo.php?dispo=<?php // echo $dispoId[""] ?>" class="btn btn-success" role="button" target="_blank" style="margin-right: 40px;">Descargar Memo</a>-->
           <button type="submit" class="btn btn-primary pull-right">Actualizar dispositivo</button>
         </div>
         <!--====  End of PIE DEL MODAL  ====-->

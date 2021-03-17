@@ -11,4 +11,9 @@
 
 			return "http://localhost/sistemainventario/";
 		}
+
+		public static function ctrRutaMemo(){
+
+			return "http://localhost/sistemainventario/extensiones/TCPDF-main/examples/memo.php?dispoId=";
+		}
 	}
