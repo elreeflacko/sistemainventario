@@ -102,6 +102,42 @@ $(document).on("click", ".btn_editar_dispositivo", function(){
 /*=====  End of CARGAR LOS DATOS DEL DISPOSITIVO A EDITAR ===*/
 
 /*=================================================
+=   CARGAR LOS DATOS DEL DISPOSITIVO PARA REVISAR =
+=================================================*/
+$(document).on("click", ".btn_ver_dispositivo", function(){
+
+	var id_ver_dispositivo = $(this).attr("id-ver-dispositivo");
+	var datos_dispositivo_ver = new FormData();
+	datos_dispositivo_ver.append("id_ver_dispositivo", id_ver_dispositivo);
+
+	$.ajax({
+		url:"ajax/dispositivos.ajax.php",
+		method:"POST",
+		data:datos_dispositivo_ver,
+		cache:false,
+		contentType:false,
+		processData:false,
+		dataType:"json",
+		success:function(respuesta){
+			$("#nombre_tipoDispo_ver").html(respuesta["tipo_dispositivo_nombre"]);
+			$("#nombre_marca_ver").html(respuesta["marca_nombre"]);
+			$("#nombre_modelo_ver").html(respuesta["modelo_nombre"]);
+			$("#serial_dispositivo_ver").val(respuesta["dispositivo_serial"]);
+			$("#activo_dispositivo_ver").val(respuesta["dispositivo_activo"]);
+			$("#comentario_dispositivo_ver").val(respuesta["dispositivo_comentario"]);
+			//$(".fecha_garantia_dispositivo_editar").val(respuesta["dispositivo_garantia"]);
+			$("#datepicker-ver").val(respuesta["dispositivo_garantia"]);
+			$("#nombre_bloque_ver").html(respuesta["bloque_nombre"]);
+			$("#nombre_lugar_ver").html(respuesta["lugar_nombre"]);
+			$("#nombre_seccion_ver").html(respuesta["seccion_nombre"]);
+			$("#nombre_persona_ver").html(respuesta["persona_nombre"]);
+			$("#estado_dispositivo_ver").html(respuesta["dispositivo_estado"]);
+		}
+	});
+});
+/*=====  End of CARGAR LOS DATOS DEL DISPOSITIVO PARA REVISAR ===*/
+
+/*=================================================
 =            CARGAR MODELOS  EDITAR               =
 =================================================*/
 $("#combobox_marca_editar").change(function(){

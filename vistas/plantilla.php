@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+  $rutaServidor = ControladorPlantilla::ctrRuta(); 
+?>
 <!DOCTYPE html>
 <html>
 <head>

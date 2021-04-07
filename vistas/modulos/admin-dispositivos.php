@@ -449,18 +449,43 @@ $ruta = ControladorPlantilla::ctrRuta();
                 </select>
               </div>
             </div>
-          </div>
-        </div>
-        <!--Entrada para la firma-->
-        <div class="form-group" style="margin-left: 20px;">
-          <div class="input-group">
-            <div id="signatureparent">
-              <div id="signature"></div>  
+            <!-- Entrada para la fecha del prestamo -->
+            <div class="form-group">
+              <label>Fecha del prestamo del dispositivo:</label>
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right fecha_prestamo_dispositivo" id="datepicker-prestar" name="fecha_prestamo_dispositivo">
+              </div>
+              <!-- /.input group -->
             </div>
-            <div id="respuesta-firma" style="margin: 20px;"></div>
-            <button type="button" class="btn btn-warning" id="repetir_firma" style="margin-right: 20px;">Repetir Firma</button>
-            <button type="button" class="btn btn-info" id="guardar_firma">Guardar Firma</button>  
-          </div>  
+            <script type="text/javascript">
+              $("#datepicker-prestar").datepicker({
+                format: 'yyyy-mm-dd'
+              });
+            </script>
+            <!--Entrada para la firma-->
+            <div class="form-group" style="margin-left: 20px;">
+              <div class="input-group">
+                <div id="signatureparent">
+                  <div id="signature"></div>  
+                </div>
+                <div id="respuesta-firma" style="margin: 20px;"></div>
+                <!--Estilos en linea para la ingresar la firma-->
+                <style type="text/css">
+                  #signatureparent{
+                  margin-top: 20px;
+                  margin-bottom: 20px;
+                  width: 800px;
+                  border-bottom: 2px solid #333;
+                }
+                </style>
+                <button type="button" class="btn btn-warning" id="repetir_firma" style="margin-right: 20px;">Repetir Firma</button>
+                <button type="button" class="btn btn-info" id="guardar_firma">Guardar Firma</button>  
+              </div>  
+            </div>
+          </div>
         </div>
         <!--====  End of CUERPO DEL MODAL  ====-->
         <!--===================================
@@ -469,8 +494,6 @@ $ruta = ControladorPlantilla::ctrRuta();
         <!--Botones-->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <!--<button type="button" class="btn btn-success" id="btn_imprimir_memo">Imprimir Memo</button>-->
-          <!--<a href="<?php //echo $ruta; ?>extensiones/TCPDF-main/examples/memo.php?dispo=<?php // echo $dispoId[""] ?>" class="btn btn-success" role="button" target="_blank" style="margin-right: 40px;">Descargar Memo</a>-->
           <button type="submit" class="btn btn-primary pull-right">Actualizar dispositivo</button>
         </div>
         <!--====  End of PIE DEL MODAL  ====-->
@@ -510,7 +533,7 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="combobox_tipoDispo_ver" id="combobox_tipoDispo_ver">
+                <select class="form-control input-lg" name="combobox_tipoDispo_ver" id="combobox_tipoDispo_ver" readonly>
                   <option id="nombre_tipoDispo_ver"></option>
                 </select>
               </div>
@@ -519,7 +542,7 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="combobox_marca_ver" id="combobox_marca_ver">
+                <select class="form-control input-lg" name="combobox_marca_ver" id="combobox_marca_ver" readonly>
                   <option id="nombre_marca_ver"></option>
                 </select>
               </div>
@@ -528,9 +551,8 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="combobox_modelo_ver" id="combobox_modelo_ver">
+                <select class="form-control input-lg" name="combobox_modelo_ver" id="combobox_modelo_ver" readonly>
                   <option id="nombre_modelo_ver"></option>
-
                 </select>
               </div>
             </div>
@@ -551,24 +573,23 @@ $ruta = ControladorPlantilla::ctrRuta();
             <!--Entrada para ver  el comentario del dispositivo-->
             <div class="form-group">
                 <label>Comentarios:</label>
-                <textarea class="form-control" rows="3" name="comentario_dispositivo_ver" id="comentario_dispositivo_ver"></textarea>
+                <textarea class="form-control" rows="3" name="comentario_dispositivo_ver" id="comentario_dispositivo_ver" readonly></textarea>
             </div>
             <!-- Entrada para ver la fecha de la garantía -->
             <div class="form-group">
                 <label>Garantía:</label>
-
                 <div class="input-group date">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right" id="datepicker-ver" name="fecha_garantia_dispositivo_ver">
+                  <input type="text" class="form-control pull-right" id="datepicker-ver" name="fecha_garantia_dispositivo_ver" readonly>
                 </div>
               </div>
             <!--Entrada para ver el bloque-->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                <select class="form-control input-lg" name="combobox_bloque_ver" id="combobox_bloque_ver">
+                <select class="form-control input-lg" name="combobox_bloque_ver" id="combobox_bloque_ver" readonly>
                   <option id="nombre_bloque_ver"></option>
                 </select>
               </div>
@@ -577,7 +598,7 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
-                <select class="form-control input-lg" name="combobox_lugar_ver" id="combobox_lugar_ver">
+                <select class="form-control input-lg" name="combobox_lugar_ver" id="combobox_lugar_ver" readonly>
                   <option id="nombre_lugar_ver"></option>
                 </select>
               </div>
@@ -586,7 +607,7 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-group"></i></span>
-                <select class="form-control input-lg" name="combobox_seccion_ver" id="combobox_seccion_ver">
+                <select class="form-control input-lg" name="combobox_seccion_ver" id="combobox_seccion_ver" readonly>
                   <option id="nombre_seccion_ver"></option>
                 </select>
               </div>
@@ -595,8 +616,17 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <select class="form-control input-lg" name="combobox_persona_ver" id="combobox_persona_ver">
+                <select class="form-control input-lg" name="combobox_persona_ver" id="combobox_persona_ver" readonly>
                   <option id="nombre_persona_ver"></option>
+                </select>
+              </div>
+            </div>
+            <!--Entrada para ver el estado del dispositivo-->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa  fa-gavel"></i></span>
+                <select class="form-control input-lg" name="combobox_estado_ver" id="combobox_estado_ver" readonly>
+                  <option id="estado_dispositivo_ver"></option>
                 </select>
               </div>
             </div>

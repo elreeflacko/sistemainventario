@@ -12,7 +12,7 @@
 			if ($item != null) {
 
 				$stmt = Conexion::conectar()->prepare("SELECT dispositivo_id, dispositivo_serial, dispositivo_activo, dispositivo_comentario, dispositivo_garantia, dispositivo_estado, 
-															  dispositivo_firma,
+															  dispositivo_estado_fecha, dispositivo_firma,
 															  modelo_id, modelo_nombre,
 															  tipo_dispositivo_id, tipo_dispositivo_nombre,
 															  marca_id, marca_nombre,

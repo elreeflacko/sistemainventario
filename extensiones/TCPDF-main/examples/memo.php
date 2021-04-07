@@ -32,30 +32,30 @@ $html = <<<EOD
 	<img src="../../../vistas/img/plantilla/logo_normal.PNG" width="200" style="text-align:center">
 </div>
 <div>
-	<h1 style="text-align:center">MEMO</h1>
+	<h2 style="text-align:center">MEMO</h2>
 </div>
 <div>
-	<h3>FECHA: Marzo 15 de 2021</h3>
-	<h3>PARA: $respuesta_memo[persona_nombre]</h3>
-	<h3>DE: Alexandra Gomez Salazar</h3>
-	<h3>ASUNTO: Entrega de Elementos de Tecnología</h3>
+	<h4>$respuesta_memo[dispositivo_estado_fecha]</h4>
+	<h4>PARA: $respuesta_memo[persona_nombre]</h4>
+	<h4>DE: Alexandra Gomez Salazar</h3>
+	<h4>ASUNTO: Entrega de Elementos de Tecnología</h4>
 	</br>
 	</br>
 	<p>A continuación, detallamos el dispositivo que se le ha asignado para uso permanente de sus labores:</p>
 </div>
 <div>
-	<table>
+	<table style="border: 1px solid black">
 		<tr>
-			<th>DETALLE</th>
-			<th>MODELO</th>
-			<th>SERIAL</th>
-			<th>ACTIVO</th>
+			<th style="border: 1px solid black">DETALLE</th>
+			<th style="border: 1px solid black">MODELO</th>
+			<th style="border: 1px solid black">SERIAL</th>
+			<th style="border: 1px solid black">ACTIVO</th>
 		</tr>
 		<tr>
-			<td>PORTATIL DELL</td>
-			<td>LATITUDE E-5410</td>
-			<td>GC9HN73</td>
-			<td>04276</td>
+			<td style="border: 1px solid black">$respuesta_memo[tipo_dispositivo_nombre]</td>
+			<td style="border: 1px solid black">$respuesta_memo[modelo_nombre]</td>
+			<td style="border: 1px solid black">$respuesta_memo[dispositivo_serial]</td>
+			<td style="border: 1px solid black">$respuesta_memo[dispositivo_activo]</td>
 		</tr>
 	</table>
 </div>
@@ -64,19 +64,35 @@ $html = <<<EOD
 	</br>
 	</br>
 	<img>
-	<h4>_____________________________________</h4>
+	<p>_____________________________________</p>
 	<h4>Alexandra Gomez Salazar</h4>
 	<h4>Coordinadora Dpto. de Tecnología</h4>
-	</br></br></br></br></br>
-	<h4>_____________________________________</h4>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	<p>_____________________________________</p>
 	<h4>Recibido</h4>
 </div>
 EOD;
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-
+$pdf->ImageSVG('@'.$respuesta_memo["dispositivo_firma"], $x=15, $y=185, $w=50, $h='', $link='', $align='', $palign='', $border=0, $fitonpage=false);
 $pdf->Output('memo.pdf', 'I');
-
 }
 
 }
@@ -85,14 +101,12 @@ $dispo_memo = new imprimirMemo();
 $dispo_memo -> dispo_id = $_GET["dispoId"];
 $dispo_memo -> impresionMemo();
 }else{
-	echo "hay un error";
-}
-/*else{
 $ruta_memo = ControladorPlantilla::ctrRuta();
 echo '<script>
-window.location="'.$.'"
-</script>';
-}*/
+window.location="'.$ruta_memo.'";
+</script>';	
+}
+
 
 
 

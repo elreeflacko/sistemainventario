@@ -100,6 +100,23 @@
 		}
 		/*===End of CARGAR LOS DATOS DEL DISPOSITIVO A EDITAR ==*/
 
+		/*=================================================
+		=    CARGAR LOS DATOS DEL DISPOSITIVO A REVISAR    =
+		=================================================*/
+		public $id_ver_dispositivo;
+
+		public function ajaxVerDispositivo(){
+
+			$item = "dispositivo_id";
+			$valor = $this->id_ver_dispositivo;
+
+			$respuesta = ControladorDispositivos::ctrMostrarDispositivos($item, $valor);
+
+			echo json_encode($respuesta);
+		}
+		/*===End of CARGAR LOS DATOS DEL DISPOSITIVO A REVISAR ==*/
+
+
 		/*=============================================================
 		=            CARGAR DATOS EN EL SELECTOR DE MODELO EDITAR     =
 		=============================================================*/
@@ -237,6 +254,16 @@
 		$editar_dispositivo_ajax-> ajaxEditarDispositivo();
 	}
 	/*=====  End of OBJETO EDITAR DISPOSITIVO  ======*/
+	/*=================================================
+	=      OBJETO VER DISPOSITIVO                 =
+	=================================================*/
+	if (isset($_POST["id_ver_dispositivo"])) {
+		
+		$ver_dispositivo_ajax = new AjaxDispositivos();
+		$ver_dispositivo_ajax-> id_ver_dispositivo = $_POST["id_ver_dispositivo"];
+		$ver_dispositivo_ajax-> ajaxVerDispositivo();
+	}
+	/*=====  End of OBJETO VER DISPOSITIVO  ======*/
 
 	/*============================================
 	=   OBJETO CARGAR SELECTOR MODELOS EDITAR    =
