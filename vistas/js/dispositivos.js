@@ -96,6 +96,7 @@ $(document).on("click", ".btn_editar_dispositivo", function(){
 			$("#nombre_persona_actual").val(respuesta["persona_id"]);
 			$("#estado_dispositivo_actual").html(respuesta["dispositivo_estado"]);
 			$("#estado_dispositivo_actual").val(respuesta["dispositivo_estado"]);
+			$("#datepicker-prestar").val(respuesta["dispositivo_estado_fecha"]);
 		}
 	});
 });
@@ -132,6 +133,7 @@ $(document).on("click", ".btn_ver_dispositivo", function(){
 			$("#nombre_seccion_ver").html(respuesta["seccion_nombre"]);
 			$("#nombre_persona_ver").html(respuesta["persona_nombre"]);
 			$("#estado_dispositivo_ver").html(respuesta["dispositivo_estado"]);
+			$(".fecha_prestamo_dispositivo").val(respuesta["dispositivo_estado_fecha"]);
 		}
 	});
 });

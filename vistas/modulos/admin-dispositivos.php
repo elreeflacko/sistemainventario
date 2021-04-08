@@ -357,7 +357,6 @@ $ruta = ControladorPlantilla::ctrRuta();
             <!-- Entrada para la fecha de la garantía -->
             <div class="form-group">
                 <label>Garantía:</label>
-
                 <div class="input-group date">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
@@ -629,6 +628,17 @@ $ruta = ControladorPlantilla::ctrRuta();
                   <option id="estado_dispositivo_ver"></option>
                 </select>
               </div>
+            </div>
+            <!-- Entrada para la fecha del prestamo -->
+            <div class="form-group">
+              <label>Fecha del prestamo del dispositivo:</label>
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right fecha_prestamo_dispositivo" readonly>
+              </div>
+              <!-- /.input group -->
             </div>
           </div>
         </div>
