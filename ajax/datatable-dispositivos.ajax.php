@@ -30,7 +30,7 @@
 
 						  	if (isset($_GET["perfil_oculto"]) && $_GET["perfil_oculto"] == "especial") {
 
-						  		$acciones = "<div class='btn-group'><button class='btn btn-info btn_ver_dispositivo' id-ver-dispositivo='".$dispositivos[$i]["dispositivo_id"]."' data-toggle='modal' data-target='#modal_ver_dispositivo'><i class='fa fa-info'></i></button><button class='btn btn-warning btn_editar_dispositivo' id-dispositivo='".$dispositivos[$i]["dispositivo_id"]."'' data-toggle='modal' data-target='#modal_editar_dispositivo' disabled><i class='fa fa-pencil'></i></button></div>";
+						  		$acciones = "<div class='btn-group'><button class='btn btn-info btn_ver_dispositivo' id-ver-dispositivo='".$dispositivos[$i]["dispositivo_id"]."' data-toggle='modal' data-target='#modal_ver_dispositivo'><i class='fa fa-info'></i></button></div>";
 						  	}else{
 
 						  		$acciones = "<div class='btn-group'><button class='btn btn-info btn_ver_dispositivo' id-ver-dispositivo='".$dispositivos[$i]["dispositivo_id"]."' data-toggle='modal' data-target='#modal_ver_dispositivo'><i class='fa fa-info'></i></button><button class='btn btn-warning btn_editar_dispositivo' id-dispositivo='".$dispositivos[$i]["dispositivo_id"]."'' data-toggle='modal' data-target='#modal_editar_dispositivo'><i class='fa fa-pencil'></i></button><a href='".$ruta_memo.$dispositivos[$i]["dispositivo_id"]."' class='btn btn-success'  target='_blank'><i class='fa fa-print'></i></a></div>";

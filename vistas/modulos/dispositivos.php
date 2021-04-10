@@ -706,6 +706,14 @@
               </div>
               <!-- /.input group -->
             </div>
+            <!--Entrada para ver la firma-->
+            <div class="form-group">
+              <div class="input-group">
+                <div style="border-style: groove; border-radius: 4px; width: 550px;">
+                  <div id="firma_ver"></div>  
+                </div>  
+              </div>
+            </div>
           </div>
         </div>
         <!--====  End of CUERPO DEL MODAL  ====-->

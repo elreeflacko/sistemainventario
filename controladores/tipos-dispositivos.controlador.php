@@ -10,11 +10,80 @@
 			if (isset($_POST["nombre_tipoDispositivo_registro"])) {
 				
 				if (preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre_tipoDispositivo_registro"])) {
+	
+				/*=============================================
+				VALIDAR IMAGEN
+				=============================================*/
+			   	$ruta_imagen = "vistas/img/dispositivos/default/anonymous.png";
+
+			   	if(isset($_FILES["imagen_dispositivo"]["tmp_name"])){
+
+					list($ancho, $alto) = getimagesize($_FILES["imagen_dispositivo"]["tmp_name"]);
+
+					$nuevo_ancho = 500;
+					$nuevo_alto = 500;
+					/*=============================================
+					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL TIPO DE DISPOSITIVO
+					=============================================*/
+					$nombre_carpeta = strtr($_POST["nombre_tipoDispositivo_registro"], " ", "-");
+
+					$directorio = "vistas/img/dispositivos/".$nombre_carpeta;
+
+					mkdir($directorio, 0755);
+
+					/*=============================================
+					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					=============================================*/
+
+					if($_FILES["imagen_dispositivo"]["type"] == "image/jpeg"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta_imagen = "vistas/img/dispositivos/".$nombre_carpeta."/".$aleatorio.".jpg";
+
+						$origen = imagecreatefromjpeg($_FILES["imagen_dispositivo"]["tmp_name"]);						
+
+						$destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+
+						imagejpeg($destino, $ruta_imagen);
+
+					}
+
+					if($_FILES["nueva_imagen"]["type"] == "image/png"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta_imagen = "vistas/img/dispositivos/".$nombre_carpeta."/".$aleatorio.".png";
+
+						$origen = imagecreatefrompng($_FILES["nueva_imagen"]["tmp_name"]);						
+
+						$destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+
+						imagepng($destino, $ruta_imagen);
+
+					}
+
+				}
+
+					//FIN VALIDAR IMAGEN
 					
 					//Nombre de la tabla de la bd
 					$tabla = "tipos_dispositivos";
 
-					$datos_tipo_dispositivo = $_POST["nombre_tipoDispositivo_registro"];
+					$datos_tipo_dispositivo = array("tipo_dispositivo_nombre" => $_POST["nombre_tipoDispositivo_registro"],
+											        "tipo_dispositivo_imagen" => $ruta_imagen);
 
 					$respuesta = ModeloTiposDispositivos::mdlRegistrarTipoDispositivo($tabla, $datos_tipo_dispositivo);
 

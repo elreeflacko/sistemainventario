@@ -134,6 +134,7 @@ $(document).on("click", ".btn_ver_dispositivo", function(){
 			$("#nombre_persona_ver").html(respuesta["persona_nombre"]);
 			$("#estado_dispositivo_ver").html(respuesta["dispositivo_estado"]);
 			$(".fecha_prestamo_dispositivo").val(respuesta["dispositivo_estado_fecha"]);
+			$("#firma_ver").html(respuesta["dispositivo_firma"]);
 		}
 	});
 });

@@ -33,10 +33,11 @@
 		=====================================================*/
 		public static function mdlRegistrarTipoDispositivo($tabla, $datos_tipo_dispositivo){
 
-			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(tipo_dispositivo_nombre) 
-				                                   VALUES(:tipo_dispositivo_nombre)");
+			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(tipo_dispositivo_nombre, tipo_dispositivo_imagen) 
+				                                   VALUES(:tipo_dispositivo_nombre, :tipo_dispositivo_imagen)");
 
-			$stmt->bindParam(":tipo_dispositivo_nombre",  $datos_tipo_dispositivo, PDO::PARAM_STR);
+			$stmt->bindParam(":tipo_dispositivo_nombre",  $datos_tipo_dispositivo["tipo_dispositivo_nombre"], PDO::PARAM_STR);
+			$stmt->bindParam(":tipo_dispositivo_imagen",  $datos_tipo_dispositivo["tipo_dispositivo_imagen"], PDO::PARAM_STR);
 
 			if ($stmt->execute()) {
 				return "ok";

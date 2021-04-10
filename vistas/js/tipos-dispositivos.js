@@ -92,3 +92,44 @@ $(document).on("click", ".btn_eliminar_tipo_dispositivo", function(){
   })
 });
 /*=====  End of ELIMINAR TIPO DISPOSITIVO  ======*/
+
+/*=================================================
+=            SUBIR IMAGEN                         =
+=================================================*/
+$("#imagen_dispositivo").change(function(){
+	var imagen_dispositivo = this.files[0];
+	//Validamos el formato de la imagen en jpg o png
+	if (imagen_dispositivo["type"] != "image/jpeg" && imagen_dispositivo["type"] != "image/png") {
+
+		$("#imagen_dispositivo").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+	}else if(imagen_dispositivo["size"] > 2000000){
+
+  		$("#imagen_dispositivo").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen no debe pesar más de 2MB!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else{
+  		var datos_imagen = new FileReader;
+  		datos_imagen.readAsDataURL(imagen_dispositivo);
+
+  		$(datos_imagen).on("load", function(event){
+
+  			var ruta_imagen = event.target.result;
+
+  			$(".previsualizar").attr("src", ruta_imagen);
+  		});
+  	}
+});
+/*=====  End of SUBIR IMAGEN  ======*/
