@@ -59,6 +59,10 @@ $(document).on("click", ".btn_editar_tipo_dispositivo", function(){
 
 			$("#id_tipo_dispositivo_actual").val(respuesta["tipo_dispositivo_id"]);
 			$("#nombre_tipoDispositivo_editar").val(respuesta["tipo_dispositivo_nombre"]);
+			if (respuesta["tipo_dispositivo_imagen"] != "") {
+				$("#imagen_actual").val(respuesta["tipo_dispositivo_imagen"]);
+				$(".previsualizar").attr("src", respuesta["tipo_dispositivo_imagen"]);
+			}
 		}
 	});
 });
@@ -96,12 +100,12 @@ $(document).on("click", ".btn_eliminar_tipo_dispositivo", function(){
 /*=================================================
 =            SUBIR IMAGEN                         =
 =================================================*/
-$("#imagen_dispositivo").change(function(){
+$(".imagen_dispositivo").change(function(){
 	var imagen_dispositivo = this.files[0];
 	//Validamos el formato de la imagen en jpg o png
 	if (imagen_dispositivo["type"] != "image/jpeg" && imagen_dispositivo["type"] != "image/png") {
 
-		$("#imagen_dispositivo").val("");
+		$(".imagen_dispositivo").val("");
 
   		 swal({
 		      title: "Error al subir la imagen",
@@ -111,7 +115,7 @@ $("#imagen_dispositivo").change(function(){
 		    });
 	}else if(imagen_dispositivo["size"] > 2000000){
 
-  		$("#imagen_dispositivo").val("");
+  		$(".imagen_dispositivo").val("");
 
   		 swal({
 		      title: "Error al subir la imagen",

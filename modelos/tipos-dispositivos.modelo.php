@@ -54,11 +54,12 @@
 		===============================================*/
 		public static function mdlEditarTipoDispositivo($tabla, $datos_tipo_dispositivo){
 
-			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_dispositivo_nombre = :tipo_dispositivo_nombre_editar
+			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_dispositivo_nombre = :tipo_dispositivo_nombre_editar, tipo_dispositivo_imagen = :tipo_dispositivo_imagen_editar
 												   WHERE tipo_dispositivo_id = :id_tipo_dispositivo");
 
 			$stmt->bindParam(":id_tipo_dispositivo",            $datos_tipo_dispositivo["id_tipo_dispositivo"], PDO::PARAM_INT);
 			$stmt->bindParam(":tipo_dispositivo_nombre_editar", $datos_tipo_dispositivo["tipo_dispositivo_nombre_editar"], PDO::PARAM_STR);
+			$stmt->bindParam(":tipo_dispositivo_imagen_editar", $datos_tipo_dispositivo["tipo_dispositivo_imagen"], PDO::PARAM_STR);
 
 			if ($stmt->execute()) {
 				return "ok";

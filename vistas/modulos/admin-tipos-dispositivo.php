@@ -80,9 +80,10 @@
                 <input type="text" class="form-control input-lg" id="nombre_tipoDispositivo_registro" name="nombre_tipoDispositivo_registro" placeholder="Ingresar Tipo dispositivo" maxlength="50" required>
               </div>
             </div>
+            <!-- Entrada para la imagen-->
             <div class="form-group">
               <label for="imagen_dispositivo">Subir Imagen</label>
-              <input type="file" id="imagen_dispositivo" name="imagen_dispositivo">
+              <input type="file" class="imagen_dispositivo" name="imagen_dispositivo">
               <p class="help-block">Peso maximo de la imagen 2MB</p>
               <img src="<?php echo $rutaServidor; ?>vistas/img/dispositivos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
             </div>
@@ -116,7 +117,7 @@
 <div id="modal_editar_tipo_dispositivo" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post">
+      <form role="form" method="post" enctype="multipart/form-data">
         <!--======================================
         =            CABEZA DEL MODAL            =
         =======================================-->
@@ -139,6 +140,14 @@
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
                 <input type="text" class="form-control input-lg" id="nombre_tipoDispositivo_editar" name="nombre_tipoDispositivo_editar" maxlength="50">
               </div>
+            </div>
+            <!--Entrada para la imagen del tipo de dispositivo-->
+            <div class="form-group">
+              <label for="imagen_dispositivo">Subir Imagen</label>
+              <input type="file" class="imagen_dispositivo" name="imagen_dispositivo_editar">
+              <p class="help-block">Peso maximo de la imagen 2MB</p>
+              <img src="<?php echo $rutaServidor; ?>vistas/img/dispositivos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <input type="hidden" id="imagen_actual" name="imagen_actual">
             </div>
           </div>
         </div>
