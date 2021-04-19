@@ -425,7 +425,7 @@
 					  }).then(function(result){
 								if (result.value) {
 
-								window.location = "index.php?action=admin-dispositivos";
+								window.location = "index.php?action=dados-baja&estado=baja";
 
 								}
 							})

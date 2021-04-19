@@ -214,7 +214,7 @@ $(document).on("click", ".btn_eliminar_dispositivo", function(){
 
     if(result.value){
 
-      window.location = "index.php?action=admin-dispositivos&id-dispositivo="+id_dispositivo;
+      window.location = "index.php?action=dados-baja&id-dispositivo="+id_dispositivo;
 
     }
 

@@ -665,14 +665,5 @@ $ruta = ControladorPlantilla::ctrRuta();
 </div>
 <!--====  End of MODAL VER DISPOSITIVO  ====-->
 
-<!--=================================================================
-=            LLAMAMOS EL METODO PARA ELIMINAR UN DISPOSITIVO        =
-==================================================================-->
-<?php
 
-      $eliminar_dispositivo = new ControladorDispositivos();
-      $eliminar_dispositivo-> ctrEliminarDispositivo();
-
-?>
-<!--====  End of LLAMAMOS EL METODO PARA ELIMINAR UN DISPOSITIVO  -->
 
