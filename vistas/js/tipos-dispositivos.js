@@ -75,6 +75,8 @@ $(document).on("click", ".btn_editar_tipo_dispositivo", function(){
 $(document).on("click", ".btn_eliminar_tipo_dispositivo", function(){
 
 	var id_tipo_dispositivo = $(this).attr("id-tipo-dispositivo");
+	var imagen = $(this).attr("imagen");
+	var tipo_dispositivo = $(this).attr("tipo-dispositivo")
 
 	swal({
     title: '¿Está seguro de borrar el tipo de dispositivo?',
@@ -89,7 +91,7 @@ $(document).on("click", ".btn_eliminar_tipo_dispositivo", function(){
 
     if(result.value){
 
-      window.location = "index.php?action=admin-tipos-dispositivo&id-tipo-dispositivo="+id_tipo_dispositivo;
+      window.location = "index.php?action=admin-tipos-dispositivo&id-tipo-dispositivo="+id_tipo_dispositivo+"&imagen="+imagen+"&tipo-dispositivo="+tipo_dispositivo;
 
     }
 

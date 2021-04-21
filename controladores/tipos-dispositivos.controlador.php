@@ -16,7 +16,7 @@
 				=============================================*/
 			   	$ruta_imagen = "vistas/img/dispositivos/default/anonymous.png";
 
-			   	if(isset($_FILES["imagen_dispositivo"]["tmp_name"])){
+			   	if(isset($_FILES["imagen_dispositivo"]["tmp_name"]) && !empty($_FILES["imagen_dispositivo"])){
 
 					list($ancho, $alto) = getimagesize($_FILES["imagen_dispositivo"]["tmp_name"]);
 
@@ -291,6 +291,13 @@
 				//Nombre de la tabla de la bd
 				$tabla = "tipos_dispositivos";
 				$datos_tipo_dispositivo = $_GET["id-tipo-dispositivo"];
+
+				//Revisamos si la variable imagen viene vacia
+				if ($_GET["imagen"] != "" && $_GET["imagen"] != "vistas/img/dispositivos/default/anonymous.png") {
+					unlink($_GET["imagen"]);
+					$nombre_carpeta_borrar = strtr($_GET["tipo-dispositivo"], " ", "-");
+					rmdir("vistas/img/dispositivos/".$nombre_carpeta_borrar);
+				}
 
 				$respuesta = ModeloTiposDispositivos::mdlEliminarTipoDispositivo($tabla, $datos_tipo_dispositivo);
 

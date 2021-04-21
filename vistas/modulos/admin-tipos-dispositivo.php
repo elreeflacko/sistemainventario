@@ -20,6 +20,7 @@
             <thead>
               <tr>
                 <th style="width: 10px;">#</th>
+                <th>Imagen</th>
                 <th>Tipo dispositivo</th>
                 <th>Acciones</th>
               </tr>
@@ -35,12 +36,18 @@
                   foreach ($mostrar_tipos_dispositivos as $key => $value) {
                     
                       echo '<tr>
-                              <td>'.($key+1).'</td>
-                              <td class="text-uppercase">'.$value["tipo_dispositivo_nombre"].'</td>
+                              <td>'.($key+1).'</td>';
+                              if (empty($value["tipo_dispositivo_imagen"]) && $value["tipo_dispositivo_imagen"] === "") {
+                                echo '<td><img src="vistas/img/dispositivos/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                              }else{
+                                echo '<td><img src="'.$value["tipo_dispositivo_imagen"].'" class="img-thumbnail" width="40px"></td>';  
+                              }
+                              
+                        echo '<td class="text-uppercase">'.$value["tipo_dispositivo_nombre"].'</td>
                               <td>
                                 <div class="btn-group">
                                   <button class="btn btn-warning btn_editar_tipo_dispositivo" id-tipo-dispositivo="'.$value["tipo_dispositivo_id"].'" data-toggle="modal" data-target="#modal_editar_tipo_dispositivo"><i class="fa fa-pencil"></i></button>
-                                  <button class="btn btn-danger btn_eliminar_tipo_dispositivo" id-tipo-dispositivo="'.$value["tipo_dispositivo_id"].'"><i class="fa fa-times"></i></button>
+                                  <button class="btn btn-danger btn_eliminar_tipo_dispositivo" id-tipo-dispositivo="'.$value["tipo_dispositivo_id"].'" imagen="'.$value["tipo_dispositivo_imagen"].'" tipo-dispositivo="'.$value["tipo_dispositivo_nombre"].'"><i class="fa fa-times"></i></button>
                                 </div>
                               </td>
                             </tr>';
