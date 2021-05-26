@@ -103,8 +103,61 @@ $(document).on("click", ".btn_ver_persona", function(){
 			$("#ver_dispositivos_de_la_persona").html(respuesta);
 		}
 	})
-})
+});
 /*=====  End of VER PERSONA  ======*/
+
+/*===================================
+= PONER LA PERSONA EN PAZ Y SALVO  =
+===================================*/
+$("#paz_salvo").click(function(){
+
+	if (this.checked) {
+
+		var id_persona = $("#id_persona_actual").val();
+		var paz_salvo = $("#paz_salvo").val();
+		var persona_pazsalvo_array = new Array (id_persona, paz_salvo);
+
+		$.ajax({
+			type:"POST",
+			url:"ajax/personas.ajax.php",
+			data: {'persona_pazsalvo_array' : persona_pazsalvo_array},
+			success:function(respuesta){
+				$("#respuesta-paz-salvo").html(respuesta);
+			}
+		});
+	}
+});
+/*=====  End of PONER LA PERSONA EN PAZ Y SALVO  ======*/
+
+/*===================================
+= PONER LA PERSONA EN  NO PAZ Y SALVO  =
+===================================*/
+$("#no_paz_salvo").click(function(){
+
+	if (this.checked) {
+
+		var id_persona = $("#id_persona_actual").val();
+		var no_paz_salvo = $("#no_paz_salvo").val();
+		var no_persona_pazsalvo_array = new Array (id_persona, no_paz_salvo);
+
+		$.ajax({
+			type:"POST",
+			url:"ajax/personas.ajax.php",
+			data: {'no_persona_pazsalvo_array' : no_persona_pazsalvo_array},
+			success:function(respuesta){
+				$("#respuesta-no-paz-salvo").html(respuesta);
+			}
+		});
+	}
+});
+/*=====  End of PONER LA PERSONA EN NO PAZ Y SALVO  ======*/
+
+$("#salir_editar_persona").click(function(){
+	$(".alert").remove();
+	$("#paz_salvo").prop("checked", false);
+	$("#no_paz_salvo").prop("checked", false);
+	window.location = "index.php?action=admin-personas";
+});
 
 
 

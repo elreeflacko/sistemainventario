@@ -87,3 +87,16 @@ $(document).on("click", ".btn_eliminar_modelo", function(){
 });
 
 /*=====  End of ELIMINAR MODELO ======*/
+
+/*==================================
+=            VER MODELO            =
+==================================*/
+$(document).on("click", ".btn_ver_modelo", function(){
+
+	var id_modelo = $(this).attr("id-modelo");
+
+	if (id_modelo) {
+		window.location = "index.php?action=info-modelo&id-modelo="+id_modelo;
+	}
+});
+/*=====  End of VER MODELO  ======*/

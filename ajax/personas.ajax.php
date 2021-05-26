@@ -60,6 +60,51 @@
 			return $lista_dispositivos_persona;
 		}
 		/*=======  End of VER PERSONA =============*/
+
+		/*===================================
+		=            PAZ Y SALVO            =
+		===================================*/
+		public $paz_salvo;
+
+		public function ajaxPazySalvo(){
+			
+			$valor1 = $this->paz_salvo[0];
+			$valor2 = $this->paz_salvo[1];
+
+			$respuesta = ControladorPersonas::ctrActualizarPazySalvo($valor1, $valor2);
+
+			if($respuesta == "ok"){
+
+				echo $paz = '<div class="alert alert-success">
+  										<strong>Excelente!</strong> La persona esta en paz y salvo
+									</div>';
+			}
+			return $paz;
+		}
+		/*=====  End of PAZ Y SALVO  ======*/	
+
+		/*===================================
+		=           NO PAZ Y SALVO          =
+		===================================*/
+		public $no_paz_salvo;
+
+		public function ajaxNoPazySalvo(){
+			
+			$valor1 = $this->no_paz_salvo[0];
+			$valor2 = $this->no_paz_salvo[1];
+
+			$respuesta = ControladorPersonas::ctrActualizarPazySalvo($valor1, $valor2);
+
+			if($respuesta == "ok"){
+
+				echo $no_paz = '<div class="alert alert-warning">
+  										<strong>Ojo</strong> La persona no esta en paz y salvo
+									</div>';
+			}
+			return $no_paz;
+		}
+		/*=====  End of NO PAZ Y SALVO  ======*/	
+	
 	}
 
 	/*============================================
@@ -94,3 +139,24 @@
 		$ver_persona_ajax-> ajaxVerPersona();
 	}
 	/*=====  End of OBJETO  VER EL LUGAR  ======*/
+
+	/*=================================================
+	=              OBJETO PAZ Y SALVO             =
+	=================================================*/
+	if (isset($_POST["persona_pazsalvo_array"])) {
+
+		$paz_salvo_ajax = new AjaxPersonas();
+		$paz_salvo_ajax-> paz_salvo = $_POST["persona_pazsalvo_array"];
+		$paz_salvo_ajax-> ajaxPazySalvo();
+	}
+	/*=====  End of OBJETO  PAZ Y SALVO  ======*/
+	/*=================================================
+	=              OBJETO NO PAZ Y SALVO             =
+	=================================================*/
+	if (isset($_POST["no_persona_pazsalvo_array"])) {
+
+		$no_paz_salvo_ajax = new AjaxPersonas();
+		$no_paz_salvo_ajax-> no_paz_salvo = $_POST["no_persona_pazsalvo_array"];
+		$no_paz_salvo_ajax-> ajaxNoPazySalvo();
+	}
+	/*=====  End of OBJETO  PAZ Y SALVO  ======*/

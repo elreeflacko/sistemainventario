@@ -135,4 +135,25 @@
 			$stmt = null;
 		}
 		/*=====  End of VER DISPOSITIVOS DEL PERSONA  ======*/
+
+		/*=============================================
+		=             ACTUALIZAR PAZ Y SALVO             =
+		=============================================*/
+		public static function mdlActualizarPazySalvo($tabla,$valor1, $valor2){
+
+			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET persona_paz = :persona_paz WHERE persona_id = :persona_id");
+
+			$stmt->bindParam(":persona_id", $valor1, PDO::PARAM_INT);
+			$stmt->bindParam(":persona_paz", $valor2, PDO::PARAM_INT);
+
+			if($stmt->execute()) {
+				return "ok";
+			}else{
+				return "false";
+				//return print_r(Conexion::conectar()->errorInfo());
+			}
+			$stmt->close();
+			$stmt = null;	
+		}
+		/*=====  End of  ACTUALIZAR PAZ Y SALVO   ======*/	
 	}

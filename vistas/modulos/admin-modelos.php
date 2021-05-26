@@ -44,6 +44,7 @@
                               <td>
                                 <div class="btn-group">
                                   <button class="btn btn-warning btn_editar_modelo" id-modelo="'.$value["modelo_id"].'" data-toggle="modal" data-target="#modal_editar_modelo"><i class="fa fa-pencil"></i></button>
+                                  <button class="btn btn-info btn_ver_modelo" id-modelo="'.$value["modelo_id"].'"><i class="fa fa-eye"></i></button>
                                   <button class="btn btn-danger btn_eliminar_modelo" id-modelo="'.$value["modelo_id"].'"><i class="fa fa-times"></i></button>
                                 </div>
                               </td>

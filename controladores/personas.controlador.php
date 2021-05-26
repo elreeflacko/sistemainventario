@@ -200,4 +200,16 @@
 			return $respuesta;
 		}
 		/*=====  End of VER PERSONA  ======*/
+
+		/*==============================================
+		=            ACTUALIZAR PAZ Y SALVO            =
+		==============================================*/
+		public static function ctrActualizarPazySalvo( $valor1, $valor2){
+
+			$tabla = "personas";
+			
+			$respuestas = ModeloPersonas::mdlActualizarPazySalvo($tabla, $valor1, $valor2);
+			return $respuestas;
+		}
+		/*=====  End of ACTUALIZAR PAZ Y SALVO  ======*/	
 	}

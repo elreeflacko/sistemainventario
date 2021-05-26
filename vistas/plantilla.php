@@ -208,6 +208,10 @@
                     include "modulos/".$_GET["action"].".php";
                     break;
 
+              case 'info-modelo':
+                    include "modulos/".$_GET["action"].".php";
+                    break;
+
               default:
                     include "modulos/404.php";
                     break;

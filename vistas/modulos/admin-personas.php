@@ -22,6 +22,7 @@
                 <th style="width: 10px;">#</th>
                 <th>Persona</th>
                 <th>Seccion</th>
+                <th>Estado</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -38,8 +39,14 @@
                       echo '<tr>
                               <td>'.($key+1).'</td>
                               <td class="text-uppercase">'.$value["persona_nombre"].'</td>
-                              <td class="text-uppercase">'.$value["seccion_nombre"].'</td>
-                              <td>
+                              <td class="text-uppercase">'.$value["seccion_nombre"].'</td>';
+                              if ($value["persona_paz"] != 1) {
+                                echo '<td><button class="btn btn-default btn-xs">Normal</button></td>';    
+                              }else{
+                                echo '<td><button class="btn btn-success btn-xs">Paz y Salvo</button></td>';    
+                              }
+                              
+                        echo '<td>
                                 <div class="btn-group">
                                   <button class="btn btn-info btn_ver_persona" id-persona="'.$value["persona_id"].'" data-toggle="modal" data-target="#modal_ver_persona"><i class="fa fa-info"></i></button>
                                   <button class="btn btn-warning btn_editar_persona" id-persona="'.$value["persona_id"].'" data-toggle="modal" data-target="#modal_editar_persona"><i class="fa fa-pencil"></i></button>
@@ -181,6 +188,19 @@
                 <input type="text" class="form-control input-lg" id="nombre_persona_editar" name="nombre_persona_editar" maxlength="60">
               </div>
             </div>
+            <!--Entrada para actualizar si la persona esta en paz y salvo-->
+            <div class="form-group" style="margin-top: 30px;">
+              <div class="input-group">
+                <div class="radio">
+                  <label><input type="radio" id="paz_salvo" name="opcion_paz" value="1">Seleccionar si la persona está en paz y salvo</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" id="no_paz_salvo" name="opcion_paz" value="0">Seleccionar si la persona no está en paz y salvo</label>
+                </div>  
+              </div>  
+            </div>
+            <div id="respuesta-paz-salvo" style="margin: 20px;"></div>
+            <div id="respuesta-no-paz-salvo" style="margin: 20px;"></div>    
           </div>
         </div>
         <!--====  End of CUERPO DEL MODAL  ====-->
@@ -189,7 +209,7 @@
         ====================================-->
         <!--Botones-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="salir_editar_persona">Salir</button>
           <button type="submit" class="btn btn-primary pull-right">Guardar persona</button>
         </div>
         <!--====  End of PIE DEL MODAL  ====-->
