@@ -7,6 +7,7 @@
         <li><a href="index.php?action=admin-elementos"><i class="fa fa-cog"></i><span>Elementos</span></a></li>
       <?php endif ?>
       <li><a href="index.php?action=admin-dispositivos"><i class="fa fa-desktop"></i><span>Dispositivos</span></a></li>
+      <li><a href="index.php?action=admin-accesorios"><i class="fa fa-keyboard-o"></i><span>Accesorios</span></a></li>
       <?php if ($_SESSION["usuario_perfil"] == "administrador" || $_SESSION["usuario_perfil"] == "especial"): ?>
          <li><a href="index.php?action=prestamos&estado=prestado"><i class="fa fa-share-alt"></i><span>Prestamos</span></a></li>
          <li><a href="index.php?action=en-reparacion&estado=reparacion"><i class="fa fa-wrench"></i><span>En reparación</span></a></li>

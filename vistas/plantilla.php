@@ -120,6 +120,10 @@
                     include "modulos/".$_GET["action"].".php";
                     break;
 
+              case 'admin-accesorios':
+                    include "modulos/".$_GET["action"].".php";
+                    break;
+
               case 'admin-portatiles':
                     include "modulos/".$_GET["action"].".php";
                     break;
