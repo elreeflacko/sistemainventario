@@ -251,6 +251,7 @@
 <script src="vistas/js/modelos.js"></script>
 <script src="vistas/js/dispositivos.js"></script>
 <script src="vistas/js/tabla-dispositivos.js"></script>
+<script src="vistas/js/tabla-accesorios.js"></script>
 <script src="vistas/js/tabla-personas.js"></script>
 <script src="vistas/js/tabla-prestar.js"></script>
 <script src="vistas/js/capturar-datos.js"></script>

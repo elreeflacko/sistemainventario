@@ -110,7 +110,7 @@ $(document).on("click", ".btn_ver_persona", function(){
 = PONER LA PERSONA EN PAZ Y SALVO  =
 ===================================*/
 $("#paz_salvo").click(function(){
-
+	$(".alert").remove();
 	if (this.checked) {
 
 		var id_persona = $("#id_persona_actual").val();
@@ -133,7 +133,7 @@ $("#paz_salvo").click(function(){
 = PONER LA PERSONA EN  NO PAZ Y SALVO  =
 ===================================*/
 $("#no_paz_salvo").click(function(){
-
+	$(".alert").remove();
 	if (this.checked) {
 
 		var id_persona = $("#id_persona_actual").val();

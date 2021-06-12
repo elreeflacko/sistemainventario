@@ -11,6 +11,7 @@
 	require_once "controladores/personas.controlador.php";
 	require_once "controladores/dispositivos.controlador.php";
 	require_once "controladores/personas-dos.controlador.php";
+	require_once "controladores/accesorios.controlador.php";
 
 	require_once "modelos/usuarios.modelo.php";
 	require_once "modelos/bloques.modelo.php";
@@ -21,7 +22,7 @@
 	require_once "modelos/secciones.modelo.php";
 	require_once "modelos/personas.modelo.php";
 	require_once "modelos/dispositivos.modelo.php";
-	require_once "modelos/personas-dos.modelo.php";
+	require_once "modelos/accesorios.modelo.php";
 
 	$plantilla = new ControladorPlantilla();
 	$plantilla->ctrPlantilla();
