@@ -31,7 +31,8 @@ $ruta = ControladorPlantilla::ctrRuta();
                 <th>Activo</th>
                 <th>Serial</th>
                 <th>Descripción</th>
-                <th>Dispositivo Serial</th>
+                <th>Estado</th>
+                <th>Categoría</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -66,7 +67,7 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-th-list"></i></span>
-                <select class="form-control input-lg" name="combobox_tipoDispo" id="combobox_tipoDispo" required>
+                <select class="form-control input-lg" name="combobox_tipoDispositivo" id="combobox_tipoDispositivo" required>
                   <option value="">Seleccionar tipo dispositivo</option>
                   <?php
 
@@ -88,7 +89,7 @@ $ruta = ControladorPlantilla::ctrRuta();
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-chain"></i></span>
-                <input type="text" class="form-control input-lg" id="activo_accesorio_registro" name="activo_accesorio_registro" placeholder="Activo">
+                <input type="text" class="form-control input-lg" id="activo_accesorio_registro" name="activo_accesorio_registro" readonly required>
               </div>
             </div>
             <!--Entrada para el serial del accesorio-->

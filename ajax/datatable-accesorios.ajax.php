@@ -37,7 +37,6 @@
 						      "'.$accesorios[$i]["accesorio_serial"].'",
 						      "'.$accesorios[$i]["accesorio_descripcion"].'",
 						      "'.$accesorios[$i]["accesorio_estado"].'",
-						      "'.$accesorios[$i]["dispositivo_serial"].'",
 						      "'.$accesorios[$i]["tipo_dispositivo_nombre"].'",
 						      "'.$acciones.'"
 						    ],';
