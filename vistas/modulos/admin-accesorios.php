@@ -21,7 +21,7 @@ $ruta = ControladorPlantilla::ctrRuta();
     <section class="content">
       <div class="box">
         <div class="box-header with-border">
-          <button class="btn btn-primary" data-toggle="modal" data-target="#modal_registrar_accesorio">Registrar accesorio</button>
+          <a class="btn btn-primary" href="index.php?action=registrar-accesorio">Registrar accesorio</a>
         </div>
         <div class="box-body">
           <table class="table table-bordered table-striped dt-responsive tablaAccesorios" width="100%">
@@ -42,107 +42,3 @@ $ruta = ControladorPlantilla::ctrRuta();
       </div>
     </section>
 </div>
-<!--=============================================
-=            MODAL REGISTRAR ACCESORIO        =
-==============================================-->
-<div id="modal_registrar_accesorio" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form role="form" method="post" enctype="multipart/form-data">
-        <!--======================================
-        =            CABEZA DEL MODAL            =
-        =======================================-->
-        <div class="modal-header" style="background: #3c8dbc; color:white">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Accesorio</h4>
-        </div>
-        <!--====  End of CABEZA DEL MODAL  ====-->
-
-        <!--======================================
-        =            CUERPO DEL MODAL            =
-        =======================================-->
-        <div class="modal-body">
-          <div class="box-body">
-            <!--Entrada para seleccionar el tipo de dispositivo al cual va a pertenecer el accesorio-->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-th-list"></i></span>
-                <select class="form-control input-lg" name="combobox_tipoDispositivo" id="combobox_tipoDispositivo" required>
-                  <option value="">Seleccionar tipo dispositivo</option>
-                  <?php
-
-                      $item = null;
-                      $valor = null;
-
-                      $lista_tipos_dispositivos = ControladorTiposDispositivos::ctrMostrarTiposDispositivos($item, $valor);
-
-                      foreach ($lista_tipos_dispositivos as $key => $value) {
-
-                        echo '<option value="'.$value["tipo_dispositivo_id"].'">'.$value["tipo_dispositivo_nombre"].'</option>';
-                      }
-
-                  ?>
-                </select>
-              </div>
-            </div>
-            <!--Entrada para el activo del accesorio-->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-chain"></i></span>
-                <input type="text" class="form-control input-lg" id="activo_accesorio_registro" name="activo_accesorio_registro" readonly required>
-              </div>
-            </div>
-            <!--Entrada para el serial del accesorio-->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-chain"></i></span>
-                <input type="text" class="form-control input-lg" id="serial_accesorio_registro" name="serial_accesorio_registro" placeholder="Ingresar serial" maxlength="60">
-              </div>
-            </div>
-            <!--Entrada para la descripcion del accesorio-->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-chain"></i></span>
-                <input type="text" class="form-control input-lg" id="descripcion_accesorio_registro" name="descripcion_accesorio_registro" placeholder="Descripción" maxlength="60">
-              </div>
-            </div>
-            <!--Entrada para el comentario del accesorio-->
-            <div class="form-group">
-                <label>Comentarios:</label>
-                <textarea class="form-control" rows="3" placeholder="Información importante ..." name="comentario_accesorio_registro"></textarea>
-            </div>
-            <!--Entrada para el estado del accesorio-->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
-                <select class="form-control input-lg" name="combobox_estado_registrar" id="combobox_estado_registrar">
-                  <option value="">Estado</option>
-                  <option value="asignado">Asignado</option>
-                  <option value="no-asignado">No asignado</option>
-                  <option value="prestado">Prestado</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--====  End of CUERPO DEL MODAL  ====-->
-        <!--===================================
-        =            PIE DEL MODAL            =
-        ====================================-->
-        <!--Botones-->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary pull-right">Guardar accesorio</button>
-        </div>
-        <!--====  End of PIE DEL MODAL  ====-->
-        <!--<?php
-
-           // $registrar_accesorio = new ControladorAccesorios();
-            //$registrar_accesorio-> ctrRegistrarAccesorio();
-
-        ?>-->
-      </form>
-    </div>
-  </div>
-</div>
-<!--====  End of MODAL REGISTRAR accesorio  ====-->

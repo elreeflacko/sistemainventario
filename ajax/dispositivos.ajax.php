@@ -107,12 +107,15 @@
 
 		public function ajaxVerDispositivo(){
 
+			//echo $this->id_ver_dispositivo;
+
 			$item = "dispositivo_id";
 			$valor = $this->id_ver_dispositivo;
 
 			$respuesta = ControladorDispositivos::ctrMostrarDispositivos($item, $valor);
 
 			echo json_encode($respuesta);
+
 		}
 		/*===End of CARGAR LOS DATOS DEL DISPOSITIVO A REVISAR ==*/
 

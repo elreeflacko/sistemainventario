@@ -156,6 +156,12 @@
                     include "modulos/".$_GET["action"].".php";
                     break;
 
+              //Seccion registrar
+
+              case 'registrar-accesorio':
+                    include "modulos/".$_GET["action"].".php";
+                    break;
+
               //Seccion ver
 
               case 'ver-lugar':
