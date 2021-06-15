@@ -125,25 +125,44 @@
           </div>
         </div>
         <div class="col-md-6">
-          <p id="tipo_dispo">hollla</p>
           <div class="table-responsive">
             <table class="table">
               <tbody>
                 <tr>
-                  <th style="width:50%">Subtotal:</th>
-                  <td>$250.30</td>
+                  <th>Tipo de dispositivo: </th>
+                  <td id="tipo_dispo"></td>
                 </tr>
                 <tr>
-                  <th>Tax (9.3%)</th>
-                  <td>$10.34</td>
+                  <th>Marca: </th>
+                  <td id="marca_dispo"></td>
                 </tr>
                 <tr>
-                  <th>Shipping:</th>
-                  <td>$5.80</td>
+                  <th>Modelo: </th>
+                  <td id="modelo_dispo"></td>
                 </tr>
                 <tr>
-                  <th>Total:</th>
-                  <td>$265.24</td>
+                  <th>Serial: </th>
+                  <td id="serial_dispo"></td>
+                </tr>
+                <tr>
+                  <th>Activo: </th>
+                  <td id="activo_dispo"></td>
+                </tr>
+                <tr>
+                  <th>Bloque: </th>
+                  <td id="bloque_dispo"></td>
+                </tr>
+                <tr>
+                  <th>Lugar: </th>
+                  <td id="lugar_dispo"></td>
+                </tr>
+                <tr>
+                  <th>Sección: </th>
+                  <td id="seccion_dispo"></td>
+                </tr>
+                <tr>
+                  <th>Persona: </th>
+                  <td id="persona_dispo"></td>
                 </tr>
               </tbody>
             </table>

@@ -36,7 +36,7 @@ $("#combobox_tipoDispositivo_registrar").change(function(){
 ==================================================================================*/
 $(document).on("change", "#buscar_serial", function(){
 
-	/*var id_ver_dispositivo = $("#buscar_serial").val();
+	var id_ver_dispositivo = $("#buscar_serial").val();
 	//console.log("id_ver_dispositivo", id_ver_dispositivo);
 
 	$.ajax({
@@ -46,23 +46,16 @@ $(document).on("change", "#buscar_serial", function(){
 		dataType:"json",
 		success:function(respuesta){
 			console.log(respuesta);
-			//console.log(respuesta);
-			//$("#tipo_dispo").html(respuesta["tipo_dispositivo_nombre"]);
-			/*$("#nombre_tipoDispo_ver").html(respuesta["tipo_dispositivo_nombre"]);
-			$("#nombre_marca_ver").html(respuesta["marca_nombre"]);
-			$("#nombre_modelo_ver").html(respuesta["modelo_nombre"]);
-			$("#serial_dispositivo_ver").val(respuesta["dispositivo_serial"]);
-			$("#activo_dispositivo_ver").val(respuesta["dispositivo_activo"]);
-			$("#comentario_dispositivo_ver").val(respuesta["dispositivo_comentario"]);
-			//$(".fecha_garantia_dispositivo_editar").val(respuesta["dispositivo_garantia"]);
-			$("#datepicker-ver").val(respuesta["dispositivo_garantia"]);
-			$("#nombre_bloque_ver").html(respuesta["bloque_nombre"]);
-			$("#nombre_lugar_ver").html(respuesta["lugar_nombre"]);
-			$("#nombre_seccion_ver").html(respuesta["seccion_nombre"]);
-			$("#nombre_persona_ver").html(respuesta["persona_nombre"]);
-			$("#estado_dispositivo_ver").html(respuesta["dispositivo_estado"]);
-			$(".fecha_prestamo_dispositivo").val(respuesta["dispositivo_estado_fecha"]);
-			$("#firma_ver").html(respuesta["dispositivo_firma"]);*/
-		//}
-	//});*/
+			$("#tipo_dispo").html(respuesta["tipo_dispositivo_nombre"]);
+			$("#marca_dispo").html(respuesta["marca_nombre"]);
+			$("#modelo_dispo").html(respuesta["modelo_nombre"]);
+			$("#serial_dispo").html(respuesta["dispositivo_serial"]);
+			$("#activo_dispo").html(respuesta["dispositivo_activo"]);
+			$("#bloque_dispo").html(respuesta["bloque_nombre"]);
+			$("#lugar_dispo").html(respuesta["lugar_nombre"]);
+			$("#seccion_dispo").html(respuesta["seccion_nombre"]);
+			$("#persona_dispo").html(respuesta["persona_nombre"]);
+			$("#estado_dispo").html(respuesta["dispositivo_estado"]);
+		}
+	});
 });
