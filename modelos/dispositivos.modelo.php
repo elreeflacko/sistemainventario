@@ -96,9 +96,9 @@
 		public static function mdlRegistrarDispositivo($tabla, $datos_dispositivo){
 
 			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(dispositivo_serial, dispositivo_activo, dispositivo_comentario, dispositivo_garantia, dispositivo_estado,
-				                                                      dispositivo_modelo_id, dispositivo_persona_id, dispositivo_lugar_id, dispositivo_firma)
+				                                                      dispositivo_modelo_id, dispositivo_persona_id, dispositivo_lugar_id)
 				                                   VALUES(:dispositivo_serial, :dispositivo_activo, :dispositivo_comentario, :dispositivo_garantia, :dispositivo_estado,
-				                                          :dispositivo_modelo_id, :dispositivo_persona_id, :dispositivo_lugar_id, :dispositivo_firma)");
+				                                          :dispositivo_modelo_id, :dispositivo_persona_id, :dispositivo_lugar_id)");
 
 			$stmt->bindParam(":dispositivo_serial",      $datos_dispositivo["serial_dispositivo"],     PDO::PARAM_STR);
 			$stmt->bindParam(":dispositivo_activo",      $datos_dispositivo["activo_dispositivo"],     PDO::PARAM_STR);
@@ -108,15 +108,15 @@
 			$stmt->bindParam(":dispositivo_modelo_id",   $datos_dispositivo["id_modelo"],              PDO::PARAM_INT);
 			$stmt->bindParam(":dispositivo_persona_id",  $datos_dispositivo["id_persona"],             PDO::PARAM_INT);
 			$stmt->bindParam(":dispositivo_lugar_id",    $datos_dispositivo["id_lugar"],               PDO::PARAM_INT);
-			$stmt->bindParam(":dispositivo_firma",       $datos_dispositivo["firma_dispositivo"],      PDO::PARAM_STR);
 
 			if ($stmt->execute()) {
 				return "ok";
 			}else{
+				//return $mensaje = print_r($stmt->errorInfo());
 				return "error";
 			}
-			$stmt->close();
-			$stmt = null;
+			$resultado = null;
+			unset($resultado);
 		}
 		/*=====  End of REGISTRAR DISPOSITIVO  ======*/
 

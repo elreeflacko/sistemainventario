@@ -13,8 +13,9 @@
 					/*=============================================
 					=  REVISAMOS SI LA FECHA VIENE VACIA          =
 					=============================================*/
-					if ($fecha_garantia == "") {
+					if ($fecha_garantia === "") {
 
+						$fecha_garantia = $_POST["fecha_garantia_dispositivo"];
 						$fecha_garantia = "0000-00-00";
 
 						//Revisamos y limpiamos el campo de serial
@@ -29,55 +30,6 @@
 						$activo_dispositivo = trim($activo_dispositivo);
 						$activo_dispositivo = filter_var($activo_dispositivo, FILTER_SANITIZE_STRING);
 
-						//Validamos la imagen de la firma
-						if (isset($_FILES["firma_persona"]["tmp_name"])) {
-
-							list($ancho, $alto) = getimagesize($_FILES["firma_persona"]["tmp_name"]);
-
-							$nuevo_ancho = 1500;
-							$nuevo_alto = 800;
-
-							/*=============================================================================
-							=            Creamos el directorio donde vamos a guardar la imagen            =
-							=============================================================================*/
-							$directorio = "vistas/img/firmas/".$_POST["combobox_persona_registro"];
-							mkdir($directorio, 0755, true);
-							/*===============================================================================================
-							=            De acuerdo al tipo de imagen aplicamos las funciones por defecto de PHP            =
-							===============================================================================================*/
-							if($_FILES["firma_persona"]["type"] == "image/jpeg"){
-								/*============================================================
-								=            guardamos la imagen en el directorio            =
-								============================================================*/
-								$firma_ruta = "vistas/img/firmas/".$_POST["combobox_persona_registro"]."/".$_POST["combobox_persona_registro"].".jpg";
-								$firma_origen = imagecreatefromjpeg($_FILES["firma_persona"]["tmp_name"]);
-								$firma_destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
-								imagecopyresized($firma_destino, $firma_origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
-								imagejpeg($firma_destino, $firma_ruta);
-								/*=====  End of guardamos la imagen en el directorio  ======*/
-								
-							}
-							if($_FILES["firma_persona"]["type"] == "image/png"){
-								/*============================================================
-								=            guardamos la imagen en el directorio            =
-								============================================================*/
-								$firma_ruta = "vistas/img/firmas/".$_POST["combobox_persona_registro"]."/".$_POST["combobox_persona_registro"].".png";
-								$firma_origen = imagecreatefrompng($_FILES["firma_persona"]["tmp_name"]);
-								$firma_destino = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
-								imagecopyresized($firma_destino, $firma_origen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
-								imagepng($firma_destino, $firma_ruta);
-								/*=====  End of guardamos la imagen en el directorio  ======*/
-								
-							}
-							/*=====  End of De acuerdo al tipo de imagen aplicamos las funciones por defecto de PHP  ======*/
-		
-							/*=====  End of Creamos el directorio donde vamos a guardar la imagen  ======*/	
-						}
-						else{
-							
-							$firma_ruta = "";
-						}
-
 						//Nombre de la tabla de la bd
 						$tabla = "dispositivos";
 
@@ -88,8 +40,7 @@
 										       'id_modelo'              => $_POST["combobox_modelo_registro"],
 										       'id_persona'             => $_POST["combobox_persona_registro"],
 										       'id_lugar'               => $_POST["combobox_lugar_registro"],
-										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"],
-											   'firma_dispositivo'      => $firma_ruta
+										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"]
 										      );
 
 						$respuesta = ModeloDispositivos::mdlRegistrarDispositivo($tabla, $datos_dispositivo);
@@ -158,12 +109,11 @@
 						$datos_dispositivo = array('serial_dispositivo' => $serial_dispositivo,
 										       'activo_dispositivo'     => $activo_dispositivo,
 										       'comentario_dispositivo' => $_POST["comentario_dispositivo_registro"],
-										       'garantia_dispositivo'   => $fecha_garantia,
+										       'garantia_dispositivo'   => $_POST["fecha_garantia_dispositivo"],
 										       'id_modelo'              => $_POST["combobox_modelo_registro"],
 										       'id_persona'             => $_POST["combobox_persona_registro"],
 										       'id_lugar'               => $_POST["combobox_lugar_registro"],
-										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"],
-											   'firma_dispositivo'      => $firma_ruta
+										       'estado_dispositivo'     => $_POST["combobox_estado_registrar"]
 										      );
 
 						$respuesta = ModeloDispositivos::mdlRegistrarDispositivo($tabla, $datos_dispositivo);
