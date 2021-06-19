@@ -10,16 +10,17 @@
 		public static function mdlRegistrarAccesorio($tabla, $datos_accesorio){
 
 			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(accesorio_activo, accesorio_serial, accesorio_descripcion, accesorio_comentario, accesorio_estado,
-				                                                      accesorio_tipo_dispositivo_id)
+				                                                      accesorio_tipo_dispositivo_id, accesorio_dispositivo_id)
 				                                   VALUES(:accesorio_activo, :accesorio_serial, :accesorio_descripcion, :accesorio_comentario, :accesorio_estado,
-				                                          :accesorio_tipo_dispositivo_id)");
+				                                          :accesorio_tipo_dispositivo_id, :accesorio_dispositivo_id)");
 
 			$stmt->bindParam(":accesorio_activo", $datos_accesorio["accesorio_activo"], PDO::PARAM_STR);
 			$stmt->bindParam(":accesorio_serial", $datos_accesorio["accesorio_serial"], PDO::PARAM_STR);
 			$stmt->bindParam(":accesorio_descripcion", $datos_accesorio["accesorio_descripcion"], PDO::PARAM_STR);
 			$stmt->bindParam(":accesorio_comentario", $datos_accesorio["accesorio_comentario"],  PDO::PARAM_STR);
 			$stmt->bindParam(":accesorio_estado", $datos_accesorio["accesorio_estado"], PDO::PARAM_STR);
-			$stmt->bindParam(":accesorio_tipo_dispositivo_id",   $datos_accesorio["accesorio_tipo_dispositivo_id"], PDO::PARAM_INT);
+			$stmt->bindParam(":accesorio_tipo_dispositivo_id", $datos_accesorio["accesorio_tipo_dispositivo_id"], PDO::PARAM_INT);
+			$stmt->bindParam(":accesorio_dispositivo_id", $datos_accesorio["accesorio_dispositivo_id"], PDO::PARAM_INT);
 	
 
 			if ($stmt->execute()) {
@@ -40,9 +41,10 @@
 			if ($item != null) {
 
 				$stmt = Conexion::conectar()->prepare("SELECT accesorio_id, accesorio_activo, accesorio_serial, accesorio_descripcion, accesorio_estado,
-															  tipo_dispositivo_nombre	
+															  tipo_dispositivo_nombre, tipo_dispositivo_id, dispositivo_serial	
 												       FROM accesorios
 												       INNER JOIN tipos_dispositivos ON accesorios.accesorio_tipo_dispositivo_id = tipos_dispositivos.tipo_dispositivo_id
+												       INNER JOIN dispositivos ON accesorios.accesorio_dispositivo_id = dispositivos.dispositivo_id
 					                                   WHERE $item = :$item ORDER BY accesorio_id DESC");
 				$stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
 				$stmt->execute();
@@ -51,9 +53,10 @@
 			}else{
 
 				$stmt = Conexion::conectar()->prepare("SELECT accesorio_id, accesorio_activo, accesorio_serial, accesorio_descripcion, accesorio_estado,
-															  tipo_dispositivo_nombre	
+															  tipo_dispositivo_nombre, dispositivo_serial	
 												       FROM accesorios
 												       INNER JOIN tipos_dispositivos ON accesorios.accesorio_tipo_dispositivo_id = tipos_dispositivos.tipo_dispositivo_id
+												       INNER JOIN dispositivos ON accesorios.accesorio_dispositivo_id = dispositivos.dispositivo_id
 													   ORDER BY accesorio_fecha ASC");
 				$stmt->execute();
 				return $stmt->fetchAll();

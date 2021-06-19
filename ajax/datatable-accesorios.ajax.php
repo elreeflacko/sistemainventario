@@ -12,7 +12,7 @@
 		=====================================================*/
 		public function mostrarTablaAccesorios(){
 
-				//$ruta_memo =  ControladorPlantilla::ctrRutaMemo();
+				$ruta =  ControladorPlantilla::ctrRuta();
 
 				$item = null;
 	          	$valor = null;
@@ -28,7 +28,7 @@
 						  		$acciones = "<div class='btn-group'><button class='btn btn-info btn_ver_accesorio' id-ver-accesorio='".$accesorios[$i]["accesorio_id"]."' data-toggle='modal' data-target='#modal_ver_accesorio'><i class='fa fa-info'></i></button></div>";
 						  	}else{
 
-						  		$acciones = "<div class='btn-group'><button class='btn btn-info btn_ver_accesorio' id-ver-accesorio='".$accesorios[$i]["accesorio_id"]."' data-toggle='modal' data-target='#modal_ver_accesorio'><i class='fa fa-info'></i></button><button class='btn btn-warning btn_editar_accesorio' id-accesorio='".$accesorios[$i]["accesorio_id"]."'' data-toggle='modal' data-target='#modal_editar_accesorio'><i class='fa fa-pencil'></i></button></div>";
+						  		$acciones = "<div class='btn-group'><button class='btn btn-info btn_ver_accesorio' id-ver-accesorio='".$accesorios[$i]["accesorio_id"]."' data-toggle='modal' data-target='#modal_ver_accesorio'><i class='fa fa-info'></i></button><a href='index.php?action=editar-accesorio&accesorioId=".$accesorios[$i]["accesorio_id"]."' class='btn btn-warning'><i class='fa fa-pencil'></i></button></div>";
 						  	}
 
 						  	$datos_json .= '[
@@ -38,6 +38,7 @@
 						      "'.$accesorios[$i]["accesorio_descripcion"].'",
 						      "'.$accesorios[$i]["accesorio_estado"].'",
 						      "'.$accesorios[$i]["tipo_dispositivo_nombre"].'",
+						      "'.$accesorios[$i]["dispositivo_serial"].'",
 						      "'.$acciones.'"
 						    ],';
 						  }

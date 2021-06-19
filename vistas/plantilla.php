@@ -162,6 +162,10 @@
                     include "modulos/".$_GET["action"].".php";
                     break;
 
+              case 'editar-accesorio':
+                    include "modulos/".$_GET["action"].".php";
+                    break;
+
               //Seccion ver
 
               case 'ver-lugar':

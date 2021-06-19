@@ -25,6 +25,23 @@
 
 				$estado_accesorio = (empty($_POST["combobox_estado_registrar"])) ? "no-asignado" : $_POST['combobox_estado_registrar'];
 
+				if (empty($_POST["buscar_serial"])){
+
+					if (empty($_POST["buscar_activo"])) {
+
+						$dispo_id_accesorio = 886;
+
+					}else{
+
+						$dispo_id_accesorio = $_POST["buscar_activo"];
+					}
+
+				}else{
+
+					$dispo_id_accesorio = $_POST["buscar_serial"];
+				}
+
+
 				$tabla  = "accesorios";
 
 				$datos_accesorio = array ('accesorio_activo' => $activo_accesorio,
@@ -32,7 +49,8 @@
 									    'accesorio_descripcion' => $descripcion_accesorio,
 									    'accesorio_comentario' => $_POST["comentario_accesorio_registro"],
 									    'accesorio_estado' => $estado_accesorio,      
-									    'accesorio_tipo_dispositivo_id' => $_POST["combobox_tipoDispositivo_registrar"]
+									    'accesorio_tipo_dispositivo_id' => $_POST["combobox_tipoDispositivo_registrar"],
+									    'accesorio_dispositivo_id' => $dispo_id_accesorio
 									);
 
 				$respuesta = ModeloAccesorios::mdlRegistrarAccesorio($tabla, $datos_accesorio);
